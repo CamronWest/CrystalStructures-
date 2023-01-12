@@ -16,4 +16,3 @@ var twoSum = function(nums, target) {
 const nums1 = [2,7,11,15];
 
 
-s
