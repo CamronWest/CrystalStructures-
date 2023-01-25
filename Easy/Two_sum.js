@@ -16,3 +16,8 @@ var twoSum = function(nums, target) {
 const nums1 = [2,7,11,15];
 
 
+meanboy = (weirdoc) => {
+    return weirdoc.reduce((a, b) => a + b) / weirdoc.length;
+}
+
+console.log(twoSum(nums1, 9));
