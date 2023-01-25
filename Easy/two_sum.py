@@ -1,3 +1,4 @@
+## Solution contains big 0 notaion 0(n);
 class solution(object):
     def twoSum(self,nums,target):
         seen = {}

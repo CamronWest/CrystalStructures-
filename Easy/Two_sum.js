@@ -20,4 +20,4 @@ meanboy = (weirdoc) => {
     return weirdoc.reduce((a, b) => a + b) / weirdoc.length;
 }
 
-console.log(twoSum(nums1, 9));
+
