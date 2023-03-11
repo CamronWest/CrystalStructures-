@@ -1,6 +1,23 @@
     Author: Camron West
-    Date: 12.19.2022
 
 
 This repo currently has folders and files for solutions to questions on the website "Leetcode".
 The problems are intended to be used to prepare for interviews, or to merely practice data structures and algorithms.
+
+This project initializes sqlalchemy as a database, here a the commands to operate with the database:
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+When pip is available, the distribution can be downloaded from PyPI and installed in one step:
+
+pip install SQLAlchemy
+This command will download the latest released version of SQLAlchemy from the Python Cheese Shop and install it to your system. For most common platforms, a Python Wheel file will be downloaded which provides native Cython / C extensions prebuilt.
+
+In order to install the latest prerelease version, such as 2.0.0b1, pip requires that the --pre flag be used:
+
+pip install --pre SQLAlchemy
+Where above, if the most recent version is a prerelease, it will be installed instead of the latest released version.
+
+Installing manually from the source distribution
+When not installing from pip, the source distribution may be installed using the setup.py script:
+
+python setup.py install
+The source install is platform agnostic and will install on any platform regardless of whether or not Cython / C build tools are installed. As the next section Building the Cython Extensions details, setup.py will attempt to build using Cython / C if possible but will fall back to a pure Python installation otherwise.
