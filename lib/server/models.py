@@ -10,3 +10,12 @@ metadata = MetaData(naming_convention={
 
 db = SQLAlchemy(metadata = metadata)
 
+class Solution(db.Model, SerializerMixin):
+    __tablename__ = 'solution'
+
+    id = db.Column(db.Integer, primary_key=True)
+    solution_name = db.Column(db.String)
+
+class graph(db.Model,SerializerMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    
