@@ -10,7 +10,13 @@ metadata = MetaData(naming_convention={
 
 db = SQLAlchemy(metadata = metadata)
 
-class Solution(db.Model, SerializerMixin):
+class User(db.Model, SerializerMixin):
+    __tablename__ = 'user'
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_name = db.Column(db.String)
+
+class Solutions(db.Model, SerializerMixin):
     __tablename__ = 'solution'
 
     id = db.Column(db.Integer, primary_key=True)
