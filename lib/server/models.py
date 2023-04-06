@@ -17,7 +17,9 @@ class User(db.Model, SerializerMixin):
     username = db.Column(db.String(20), unique=True)
     email = db.Column(db.String(), unique=True)
     password = db.Column(db.String(), nullable=False)
-    
+
+    solutions = db.relationship('Solutions', backref='User')   
+
     def __repr__(self):
         return f"User(username={self.username}, email={self.email})"
     
@@ -28,12 +30,18 @@ class User(db.Model, SerializerMixin):
             'email': self.email
         }
 
+
+class Problem(db.Model, SerializerMixin):
+    id = db.Column(db.Integer, primary_key=True)
+
+
 class Solutions(db.Model, SerializerMixin):
-    __tablename__ = 'solutions'
+    __tablename__ = 'solution'
 
     id = db.Column(db.Integer, primary_key=True)
     solution_name = db.Column(db.String)
 
-class graph(db.Model,SerializerMixin):
+class UserGraph(db.Model,SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     
+    user = db.relationship('user', backref='UserGraph')
