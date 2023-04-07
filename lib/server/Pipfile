@@ -4,7 +4,15 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-sqlalchemy = "*"
+Faker = "14.2.0"
+Flask = "2.2.2"
+Flask-Migrate = "3.1.0"
+Flask-SQLAlchemy = "2.5.1"
+importlib-resources = "5.10.0"
+ipdb = "0.13.9"
+pytest = "7.1.3"
+flask-restful = "*"
+sqlalchemy-serializer = "1.4.1"
 
 [dev-packages]
 
