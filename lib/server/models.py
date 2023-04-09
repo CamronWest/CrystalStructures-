@@ -3,7 +3,7 @@ from sqlalchemy import MetaData
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy_serializer import SerializerMixin
-
+import re
 metadata = MetaData(naming_convention={
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
 })
@@ -14,7 +14,7 @@ class User(db.Model, SerializerMixin):
     __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique=True)
+    username = db.Column(db.String(), unique=True)
     email = db.Column(db.String(), unique=True)
     password = db.Column(db.String(), nullable=False)
 
@@ -29,6 +29,21 @@ class User(db.Model, SerializerMixin):
             'username': self.username,
             'email': self.email
         }
+    @validates('username')
+    def validate_username(self, key, username):
+        assert username is not None
+        return username
+    @validates('email')
+    def validate_email(self, key, email):
+        assert email is not None
+        return email
+    @validates('password')
+    def validate_password(self, key, password):
+        regex = re.compile('[^a-zA-Z0-9]')
+        if regex.search(password) is None:
+            raise ValueError('password must contain at least one special character')
+        return password
+        
 
 
 class Problem(db.Model, SerializerMixin):
@@ -41,6 +56,9 @@ class Problem(db.Model, SerializerMixin):
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
     problem_solutions = db.relationship('UserGraph', backref='problem')
+    
+    def __repr__(self):
+        return f"Problem(contents={self.contents})"
 
 class Solutions(db.Model, SerializerMixin):
     __tablename__ = 'solution'
