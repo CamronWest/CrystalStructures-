@@ -13,7 +13,6 @@ ipdb = "0.13.9"
 pytest = "7.1.3"
 flask-restful = "*"
 sqlalchemy-serializer = "1.4.1"
-
 [dev-packages]
 
 [requires]
