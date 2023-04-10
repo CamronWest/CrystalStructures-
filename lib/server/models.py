@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from faker import Faker
 from sqlalchemy import MetaData
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.associationproxy import association_proxy
@@ -50,7 +51,9 @@ class Problem(db.Model, SerializerMixin):
     __tablename__ = 'problem'
 
     id = db.Column(db.Integer, primary_key=True)
-    contents = db.Column(db.String)
+    title = db.Column(db.String(100))
+    description = db.Column(db.String(1000))
+
 
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
