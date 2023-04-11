@@ -9,6 +9,7 @@ import json
 
 def generate_problem():
    
+   Problem.query.delete()
    
    print('generating problems...')
    
@@ -19,7 +20,7 @@ def generate_problem():
    problem.title = title
    problem.description = description
    problem.difficulty = random.randint(1, 5)
-   db.session.add(problem)
+   db.session.add_all(problem)
    db.session.commit()
 
 with app.app_context():

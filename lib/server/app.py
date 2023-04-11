@@ -94,3 +94,12 @@ def get_problem(id):
     problem = Problem.query.filter(Problem.id == id).first()
     return jsonify(problem.to_dict(), 200)
 
+@app.route('/solutions/<int:id>', methods=['GET'])
+def get_solutions():
+    solutions = Solutions.query.all()
+    return jsonify([solution.to_dict() for solution in solutions], 200)
+
+@app.route('/usergraph/<int:id>', methods=['GET'])
+def get_usergraph(id):
+    usergraph = UserGraph.query.filter(UserGraph.user_id == id).first()
+    return jsonify(usergraph.to_dict(), 200)
