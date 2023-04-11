@@ -1,0 +1,18 @@
+:root {
+    --dark: #333;
+    --light: #f5f8ff;
+    --primary: #518cf8;
+  
+  }
+
+.dark {
+    color: var(--light);
+    transition: all 0.4s;
+    background-color: var(--dark);
+  }
+  
+  .light {
+    color: var(--dark);
+    transition: all 0.4s;
+    background-color: var(--light);
+  }
