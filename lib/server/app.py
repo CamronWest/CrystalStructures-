@@ -39,7 +39,7 @@ class Signup(Resource):
             return {'error': '422 Unprocessable Enitity'}, 422
 class CheckSesssion(Resource):
     def get(self):
-        if 'user_id' in session:
+        if session.get('user_id'):
             user = User.query.filter(User.id == session['user_id']).first()
             return user.to_dict(), 200
         else:
@@ -50,7 +50,7 @@ class Login(Resource):
     def post(self):
         email = request.json['email']
         password = request.json['password']
-        user = User.query.filter(User.username == username).first()
+        user = User.query.filter(User.email == email).first()
         if user:
             if user.authenticate(password):
                 session['user_id'] = user.id
@@ -58,7 +58,12 @@ class Login(Resource):
             else:
                 return {'error': '401 Unauthorized'}, 401
 
-
+class Logout(Resource):
+    def delete(self):
+        if session.get('user_id'):
+            session['user_id'] = None
+            return {}, 204
+        return {'error': '401 Unauthorized'}, 401
 
 
 @app.route('/')
@@ -100,3 +105,6 @@ def get_problem(id):
     problem = Problem.query.filter(Problem.id == id).first()
     return jsonify(problem.to_dict(), 200)
 
+api.add_resource(Signup, '/signup', endpoint='signup')
+api.add_resource(Login, '/login' endpoint='login')
+api.add_resource(Logout, '/logout' endpoint='logout')
