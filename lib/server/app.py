@@ -4,6 +4,8 @@ from flask_restful import Api, Resource
 from models import User, Problem, Solutions, UserGraph
 from sqlalchemy.exc import IntegrityError
 from config import app, db, bcrypt, api
+import logging
+from logging.handlers import RotatingFileHandler
 
 
 class Signup(Resource):
@@ -79,7 +81,7 @@ def user_details(id):
         db.session.delete(user)
         db.session.commit()
         return jsonify(user.to_dict(), 200)
-@app.route('/users', methods=['POST']) #creates a new user
+@app.route('/signup', methods=['POST']) #creates a new user
 def create_user():
     username = request.json['username']
     email = request.json['email']
@@ -89,12 +91,12 @@ def create_user():
     db.session.commit()
     return jsonify(user.serialize(), 201)
 
-@app.route('/problems/<int:id>', methods=['GET'])
+@app.route('/problems/', methods=['GET'])
 def get_problem(id):
     problem = Problem.query.filter(Problem.id == id).first()
     return jsonify(problem.to_dict(), 200)
 
-@app.route('/solutions/<int:id>', methods=['GET'])
+@app.route('/solutions/', methods=['GET'])
 def get_solutions():
     solutions = Solutions.query.all()
     return jsonify([solution.to_dict() for solution in solutions], 200)
@@ -103,3 +105,23 @@ def get_solutions():
 def get_usergraph(id):
     usergraph = UserGraph.query.filter(UserGraph.user_id == id).first()
     return jsonify(usergraph.to_dict(), 200)
+
+api.add_resource(Signup, '/signup')
+api.add_resource(Login, '/login')
+api.add_resource(Logout, '/logout')
+
+logger = logging.getLogger()
+logFormatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s", datefmt='%Y-%m-%d %H:%M:%S')
+
+""" ## console log configuration """
+consoleHandler = logging.StreamHandler()
+consoleHandler.setFormatter(logFormatter)
+logger.addHandler(consoleHandler)
+
+""" ## file log configuration """
+fileHandler = RotatingFileHandler('logs.log', backupCount=100, maxBytes=1024)
+fileHandler.setFormatter(logFormatter)
+logger.addHandler(fileHandler)
+
+if __name__ == '__main__':
+    app.run(port=5555, debug=True)
