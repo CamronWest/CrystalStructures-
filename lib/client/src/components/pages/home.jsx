@@ -5,7 +5,7 @@ function HomePage({user, setUser}) {
     return (
         <div className = "homepage">
             <div>
-                <a href="/access">Login</a>
+                <a href="/">Login</a>
             </div>
             <div className = "crystal">Crystal</div>
         </div>
