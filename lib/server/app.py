@@ -101,7 +101,7 @@ def get_solutions():
     solutions = Solutions.query.all()
     return jsonify([solution.to_dict() for solution in solutions], 200)
 
-@app.route('/usergraph/<int:id>', methods=['GET'])
+@app.route('/usergraph/', methods=['GET'])
 def get_usergraph(id):
     usergraph = UserGraph.query.filter(UserGraph.user_id == id).first()
     return jsonify(usergraph.to_dict(), 200)
