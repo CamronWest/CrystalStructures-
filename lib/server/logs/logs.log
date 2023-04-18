@@ -1,0 +1,12 @@
+2023-04-16 23:09:21 - INFO -  * Restarting with stat
+2023-04-16 23:09:22 - WARNING -  * Debugger is active!
+2023-04-16 23:09:22 - INFO -  * Debugger PIN: 143-180-383
+2023-04-16 23:10:13 - INFO - 127.0.0.1 - - [16/Apr/2023 23:10:13] "[33mPOST /signup HTTP/1.1[0m" 404 -
+2023-04-16 23:10:19 - INFO - 127.0.0.1 - - [16/Apr/2023 23:10:19] "[31m[1mPOST /login HTTP/1.1[0m" 400 -
+2023-04-16 23:10:31 - INFO - 127.0.0.1 - - [16/Apr/2023 23:10:31] "[31m[1mPOST /login HTTP/1.1[0m" 400 -
+2023-04-16 23:11:19 - INFO -  * Detected change in '/home/underscoreimpunity/LeetcodeSolutions/Varying-LeetcodeSolutions/lib/server/app.py', reloading
+2023-04-16 23:11:19 - INFO -  * Restarting with stat
+2023-04-16 23:11:20 - WARNING -  * Debugger is active!
+2023-04-16 23:11:20 - INFO -  * Debugger PIN: 143-180-383
+2023-04-16 23:16:22 - INFO - 127.0.0.1 - - [16/Apr/2023 23:16:22] "[33mPOST /lsignup HTTP/1.1[0m" 404 -
+2023-04-16 23:16:29 - INFO - 127.0.0.1 - - [16/Apr/2023 23:16:29] "[31m[1mPOST /signup HTTP/1.1[0m" 400 -
