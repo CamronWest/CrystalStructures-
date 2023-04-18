@@ -7,12 +7,11 @@ import re
 from config import db, bcrypt
 from uuid import uuid4
 
-def get_uuid():
-    return uuid4().hex
+
 class User(db.Model, SerializerMixin):
     __tablename__ = 'user'
 
-    id = db.Column(db.String(32), primary_key=True, default=get_uuid)
+    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(), unique=True)
     email = db.Column(db.String(), unique=True)
     password = db.Column(db.String(), nullable=False)
@@ -26,22 +25,9 @@ class User(db.Model, SerializerMixin):
         return {
             'id':self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
         }
-    @validates('username')
-    def validate_username(self, key, username):
-        assert username is not None
-        return username
-    @validates('email')
-    def validate_email(self, key, email):
-        assert email is not None
-        return email
-    @validates('password')
-    def validate_password(self, key, password):
-        regex = re.compile('[^a-zA-Z0-9]')
-        if regex.search(password) is None:
-            raise ValueError('password must contain at least one special character')
-        return password
+   
         
 
 
