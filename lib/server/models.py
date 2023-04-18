@@ -2,13 +2,17 @@ from faker import Faker
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy_serializer import SerializerMixin
+from flask_sqlalchemy import SQLAlchemy
 import re
 from config import db, bcrypt
+from uuid import uuid4
 
+def get_uuid():
+    return uuid4().hex
 class User(db.Model, SerializerMixin):
     __tablename__ = 'user'
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.String(32), primary_key=True, default=get_uuid)
     username = db.Column(db.String(), unique=True)
     email = db.Column(db.String(), unique=True)
     password = db.Column(db.String(), nullable=False)
