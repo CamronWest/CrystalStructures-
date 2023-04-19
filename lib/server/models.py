@@ -7,12 +7,14 @@ import re
 from config import db, bcrypt
 from uuid import uuid4
 
+def get_uuid():
+    return uuid4().hex
 
 class User(db.Model, SerializerMixin):
     __tablename__ = 'user'
 
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(), unique=True)
+    id = db.Column(db.String(32), primary_key=True, default=get_uuid)
+    username = db.Column(db.String())
     email = db.Column(db.String(), unique=True)
     password = db.Column(db.String(), nullable=False)
 
@@ -21,13 +23,11 @@ class User(db.Model, SerializerMixin):
     def __repr__(self):
         return f"User(username={self.username}, email={self.email})"
     
-    def serialize(self):
-        return {
-            'id':self.id,
-            'username': self.username,
-            'email': self.email,
-        }
-   
+    @validates('email')
+    def validate_email(self, key, email):
+        assert '@' in email
+        return email
+    
         
 
 

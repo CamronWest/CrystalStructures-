@@ -1,35 +1,51 @@
-:root {
-    --dark: #333;
-    --light: #ffeba7;
-    --primary: #518cf8;
-  
-  }
+body {
+    padding: 0;
+    margin: 0;
+}
 
-.dark {
-    color: var(--light);
-    transition: all 0.4s;
-    background-color: var(--dark);
-  }
-  
-  .light {
-    color: var(--dark);
-    transition: all 0.4s;
-    background-color: var(--light);
-  }
+section {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    min-height: 75vh;
+}
 
-  .btn{  
-    border-radius: 99px;
-    height: 35px;
-    font-size: 12px;
-    font-weight: 780;
+.landingpage-title {
+    font-size: 2rem;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    min-height: 1vh;
+}
+
+.landingpage-loading {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  min-height: 50vh;
+}
+.left__subtitle{
+  display: grid;
+  place-items: center;
+  align-content: center;
+  min-height: 44vh;
+}
+
+
+.Login-reg-btn{  
+    border-radius: 4px;
+    height: 44px;
+    font-size: 13px;
+    font-weight: 600;
     text-transform: uppercase;
     -webkit-transition : all 200ms linear;
     transition: all 200ms linear;
-    padding: 0 22px;
+    padding: 0 30px;
     letter-spacing: 1px;
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
+    display: grid;
     -webkit-align-items: center;
     -moz-align-items: center;
     -ms-align-items: center;
@@ -45,13 +61,13 @@
     color: #102770;
     box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
   }
-  .btn:active,
-  .btn:focus{  
+  .Login-reg-btn:active,
+  .Login-reg-btn:focus{  
     background-color: #102770;
     color: #ffeba7;
     box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
   }
-  .btn:hover{  
+  .Login-reg-btn:hover{  
     background-color: #102770;
     color: #ffeba7;
     box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);

@@ -84,7 +84,7 @@ def login_user():
 @cross_origin
 @app.route("/logout", methods=["POST"])
 def logout_user():
-    session.pop("user_id")
+    session.pop(user_id)
     return "200"
 
 @app.route('/')
