@@ -9,7 +9,9 @@ from config import app, db, bcrypt, api, ApplicationConfig
 from flask_cors import CORS, cross_origin
 import logging
 from logging.handlers import RotatingFileHandler
-
+import os
+import subprocess
+import uuid
 
 app.config.from_object(ApplicationConfig)
 
@@ -48,17 +50,22 @@ def register_user():
         return jsonify({"error": "User already exists"}), 409
 
     hashed_password = bcrypt.generate_password_hash(password)
-    new_user = User(email=email, password=hashed_password)
-    db.session.add(new_user)
-    db.session.commit()
+    try:
+        new_user = User(email=email, password=hashed_password)
+        db.session.add(new_user)
+        db.session.commit()
     
-    session["user_id"] = new_user.id
+        session["user_id"] = new_user.id
 
-    return jsonify({
-        "id": new_user.id,
-        "username": new_user.username,
-        "email": new_user.email
-    })
+        return jsonify({
+            "id": new_user.id,
+            "username": new_user.username,
+            "email": new_user.email
+        })
+    except AssertionError:
+        response = make_response(
+            request.get_json(),['validate_email'], 400
+        )
 
 @cross_origin
 @app.route("/login", methods=["POST"])
@@ -96,19 +103,46 @@ def get_users():
     users = User.query.all()
     return jsonify([user.to_dict() for user in users], 200)
 
+@app.route('/users', methods=['GET', 'PUT', 'DELETE'])
+def get_user(id):
+    user = User.query.get_or404(id)
+    if request.method == 'GET':
+        return jsonify(user.to_dict(), 200)
+    elif request.method == 'PUT':
+        user.username = request.json['username']
+        user.email = request.json['email']
+        user.password = request.json['password']
+        user.solutions = request.json['solutions']
+        db.session.commit()
+        return jsonify(user.to_dict(), 200)
 
 
-@app.route('/problems/', methods=['GET'])
-def get_problem(id):
-    problem = Problem.query.filter(Problem.id == id).first()
-    return jsonify(problem.to_dict(), 200)
+@app.route('/problems', methods=['GET'])
+def get_problem():
+    problems = Problem.query.all()
+    return jsonify([problem.to_dict() for problem in problems], 200)
 
-@app.route('/solutions/', methods=['GET'])
+@app.route('/solutions', methods=['GET'])
 def get_solutions():
     solutions = Solutions.query.all()
     return jsonify([solution.to_dict() for solution in solutions], 200)
+@cross_origin
+@app.route('/solution', methods=['GET', 'POST'])
+def post_solutions():
+    solution = Solutions(
+        language=request.json['language'],
+        code=request.json['code'],
+    )
+    db.session.add(solution)
+    db.session.commit()
+    return jsonify(solution.to_dict(), 200)
 
-@app.route('/usergraph/', methods=['GET'])
+
+
+
+
+
+@app.route('/usergraph', methods=['GET'])
 def get_usergraph(id):
     usergraph = UserGraph.query.filter(UserGraph.user_id == id).first()
     return jsonify(usergraph.to_dict(), 200)
