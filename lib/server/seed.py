@@ -4,26 +4,24 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from app import app
 from models import db, User, Problem, Solutions, UserGraph
+from faker import Faker
 import os
 import json
 
-def generate_problem():
-   
-   Problem.query.delete()
-   
-   print('generating problems...')
-   
-   title = ''.join(random.choices(string.ascii_uppercase, k=10))
-   description = ''.join(random.choices(string.ascii_uppercase + string.digits, k=100))
-
-   problem = Problem()
-   problem.title = title
-   problem.description = description
-   problem.difficulty = random.randint(1, 5)
-   db.session.add_all(problem)
-   db.session.commit()
+fake = Faker()
 
 with app.app_context():
+   print('Deleting all problems...')
+   Problem.query.delete()
 
-   for i in range(15):
-      generate_problem()
+   print('adding new ones... like 10')
+   for i in range(10):
+    p = Problem(
+        title=fake.sentence(),
+        description=fake.text(),
+        data_structures=fake.word(),
+        difficulty=fake.random_int(min=1, max=5)
+    )
+    db.session.add(p)
+
+   db.session.commit()

@@ -37,7 +37,8 @@ class Problem(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
     description = db.Column(db.String(1000))
-
+    data_structures = db.Column(db.String(100))
+    difficulty = db.Column(db.Integer)
 
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
@@ -51,7 +52,8 @@ class Solutions(db.Model, SerializerMixin):
     __tablename__ = 'solution'
 
     id = db.Column(db.Integer, primary_key=True)
-    solution_name = db.Column(db.String)
+    language = db.Column(db.String(100))
+    code = db.Column(db.String())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())

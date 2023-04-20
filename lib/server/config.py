@@ -16,7 +16,7 @@ class ApplicationConfig:
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data_structures.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.json.compact = False
-
+    
     SESSION_TYPE = "redis"
     SESSION_PERMANENT = False
     SESSION_USE_SIGNER = True
