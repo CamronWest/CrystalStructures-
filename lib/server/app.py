@@ -126,6 +126,7 @@ def get_problem():
 def get_solutions():
     solutions = Solutions.query.all()
     return jsonify([solution.to_dict() for solution in solutions], 200)
+    
 @cross_origin
 @app.route('/solution', methods=['GET', 'POST'])
 def post_solutions():
