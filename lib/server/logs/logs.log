@@ -1,5 +1,10 @@
-2023-04-20 02:42:47 - INFO - 127.0.0.1 - - [20/Apr/2023 02:42:47] "GET /problems HTTP/1.1" 200 -
-2023-04-20 02:42:47 - INFO - 127.0.0.1 - - [20/Apr/2023 02:42:47] "GET /problems HTTP/1.1" 200 -
-2023-04-20 02:43:29 - INFO - 127.0.0.1 - - [20/Apr/2023 02:43:29] "OPTIONS /solution HTTP/1.1" 200 -
-2023-04-20 02:43:29 - INFO - 127.0.0.1 - - [20/Apr/2023 02:43:29] "POST /solution HTTP/1.1" 200 -
-2023-04-20 03:01:56 - INFO -  * Detected change in '/home/underscoreimpunity/LeetcodeSolutions/Varying-LeetcodeSolutions/lib/server/app.py', reloading
+2023-04-20 14:22:16 - INFO - 127.0.0.1 - - [20/Apr/2023 14:22:16] "GET /problems HTTP/1.1" 200 -
+2023-04-20 14:22:25 - INFO - 127.0.0.1 - - [20/Apr/2023 14:22:25] "OPTIONS /solution HTTP/1.1" 200 -
+2023-04-20 14:22:25 - INFO - 127.0.0.1 - - [20/Apr/2023 14:22:25] "POST /solution HTTP/1.1" 200 -
+2023-04-20 14:22:25 - INFO - 127.0.0.1 - - [20/Apr/2023 14:22:25] "GET /problems HTTP/1.1" 200 -
+2023-04-20 14:22:35 - INFO - 127.0.0.1 - - [20/Apr/2023 14:22:35] "[31m[1mGET /@me HTTP/1.1[0m" 401 -
+2023-04-20 14:26:44 - INFO - 127.0.0.1 - - [20/Apr/2023 14:26:44] "OPTIONS /signup HTTP/1.1" 200 -
+2023-04-20 14:26:44 - INFO - 127.0.0.1 - - [20/Apr/2023 14:26:44] "[35m[1mPOST /signup HTTP/1.1[0m" 500 -
+2023-04-20 14:26:58 - INFO - 127.0.0.1 - - [20/Apr/2023 14:26:58] "OPTIONS /signup HTTP/1.1" 200 -
+2023-04-20 14:26:58 - INFO - 127.0.0.1 - - [20/Apr/2023 14:26:58] "POST /signup HTTP/1.1" 200 -
+2023-04-20 14:26:58 - INFO - 127.0.0.1 - - [20/Apr/2023 14:26:58] "GET /problems HTTP/1.1" 200 -
