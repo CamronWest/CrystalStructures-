@@ -1,0 +1,12 @@
+2023-04-19 21:03:01 - INFO -  * Restarting with stat
+2023-04-19 22:47:44 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5555
+2023-04-19 22:47:44 - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 22:47:45 - INFO -  * Restarting with stat
+2023-04-19 22:47:45 - WARNING -  * Debugger is active!
+2023-04-19 22:47:45 - INFO -  * Debugger PIN: 121-533-397
+2023-04-19 22:49:24 - INFO - 127.0.0.1 - - [19/Apr/2023 22:49:24] "[31m[1mGET /@me HTTP/1.1[0m" 401 -
+2023-04-19 22:49:29 - INFO - 127.0.0.1 - - [19/Apr/2023 22:49:29] "[31m[1mGET /@me HTTP/1.1[0m" 401 -
+2023-04-19 22:50:39 - INFO - 127.0.0.1 - - [19/Apr/2023 22:50:39] "GET /problems HTTP/1.1" 200 -
+2023-04-19 22:53:05 - INFO - 127.0.0.1 - - [19/Apr/2023 22:53:05] "GET /problems HTTP/1.1" 200 -
+2023-04-19 22:53:51 - INFO - 127.0.0.1 - - [19/Apr/2023 22:53:51] "GET /problems HTTP/1.1" 200 -

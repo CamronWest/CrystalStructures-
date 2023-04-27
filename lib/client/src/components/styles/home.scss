@@ -1,0 +1,27 @@
+.problem-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 150vh;
+
+    a {
+    display: block;
+    width: 100%;
+    min-height: 6Vh;
+    margin-top: 15vh;
+    margin-bottom: auto;
+    padding-bottom: auto;
+    padding: 1rem;
+    text-align: center;
+    font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+    border-radius: 66vh;
+    color: #fff;
+    text-decoration: none;
+    
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #dbc066;
+    }
+  }
+}

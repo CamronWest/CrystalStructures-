@@ -2,14 +2,19 @@ from faker import Faker
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy_serializer import SerializerMixin
+from flask_sqlalchemy import SQLAlchemy
 import re
 from config import db, bcrypt
+from uuid import uuid4
+
+def get_uuid():
+    return uuid4().hex
 
 class User(db.Model, SerializerMixin):
     __tablename__ = 'user'
 
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(), unique=True)
+    id = db.Column(db.String(32), primary_key=True, default=get_uuid)
+    username = db.Column(db.String())
     email = db.Column(db.String(), unique=True)
     password = db.Column(db.String(), nullable=False)
 
@@ -18,26 +23,11 @@ class User(db.Model, SerializerMixin):
     def __repr__(self):
         return f"User(username={self.username}, email={self.email})"
     
-    def serialize(self):
-        return {
-            'id':self.id,
-            'username': self.username,
-            'email': self.email
-        }
-    @validates('username')
-    def validate_username(self, key, username):
-        assert username is not None
-        return username
     @validates('email')
     def validate_email(self, key, email):
-        assert email is not None
+        assert '@' in email
         return email
-    @validates('password')
-    def validate_password(self, key, password):
-        regex = re.compile('[^a-zA-Z0-9]')
-        if regex.search(password) is None:
-            raise ValueError('password must contain at least one special character')
-        return password
+    
         
 
 
@@ -47,7 +37,8 @@ class Problem(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
     description = db.Column(db.String(1000))
-
+    data_structures = db.Column(db.String(100))
+    difficulty = db.Column(db.Integer)
 
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
@@ -61,7 +52,8 @@ class Solutions(db.Model, SerializerMixin):
     __tablename__ = 'solution'
 
     id = db.Column(db.Integer, primary_key=True)
-    solution_name = db.Column(db.String)
+    language = db.Column(db.String(100))
+    code = db.Column(db.String())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())

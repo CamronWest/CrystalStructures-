@@ -1,0 +1,42 @@
+option{
+    background-color: rgb(71, 66, 66);
+}
+select{
+    background-color: rgb(71, 66, 66);
+}
+
+textarea {
+    background-color: rgb(71, 66, 66);
+    color: white;
+    border-radius: 4px;
+}
+
+#sub-btn{
+    border-radius: 4px;
+    height: 44px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    -webkit-transition : all 200ms linear;
+    transition: all 200ms linear;
+    padding: 0 30px;
+    letter-spacing: 3px;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    display: grid;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    text-align: center;
+    border: none;
+    background-color: rgb(71, 66, 66);
+    color: #070204;
+    box-shadow: 0 8px 24px 0 rgba(121, 107, 61, 0.2) 
+}
