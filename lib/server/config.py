@@ -14,6 +14,7 @@ app = Flask(__name__)
 class ApplicationConfig:
     SECRET_KEY = os.environ["SECRET_KEY"]
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data_structures.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.json.compact = False
     
