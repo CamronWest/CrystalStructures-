@@ -24,4 +24,4 @@ with app.app_context():
     )
     db.session.add(p)
 
-   db.session.commit()
+    db.session.commit()
