@@ -19,7 +19,7 @@ Where above, if the most recent version is a prerelease, it will be installed in
 Installing manually from the source distribution
 When not installing from pip, the source distribution may be installed using the setup.py script:
 
-python setup.py install
+
 The source install is platform agnostic and will install on any platform regardless of whether or not Cython / C build tools are installed. As the next section Building the Cython Extensions details, setup.py will attempt to build using Cython / C if possible but will fall back to a pure Python installation otherwise.
 
 ## pipenv install - to install appropriate packages for SQLALchemy and flask
