@@ -16,7 +16,7 @@ In order to install the latest prerelease version, such as 2.0.0b1, pip requires
 pip install --pre SQLAlchemy
 Where above, if the most recent version is a prerelease, it will be installed instead of the latest released version.
 
-Installing manually from the source distribution
+
 When not installing from pip, the source distribution may be installed using the setup.py script:
 
 
