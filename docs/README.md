@@ -4,6 +4,9 @@
 This repo currently has folders and files for solutions to questions on the website "Leetcode".
 The problems are intended to be used to prepare for interviews, or to merely practice data structures and algorithms.
 
+The client Side portion of this repository includes a online code complier meant to be use intutatively with the data structures and Algo problems listed on the homepage UI.
+The database for this project was deployed to Render however, in the future it will be migrated to AWS(dynamicDB).
+
 This project initializes sqlalchemy as a database, here a the commands to operate with the database:
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 When pip is available, the distribution can be downloaded from PyPI and installed in one step:
