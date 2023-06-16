@@ -1,4 +1,4 @@
-    Author: Camron West
+   Author: Camron West
 
 
 This repo currently has folders and files for solutions to questions on the website "Leetcode".
