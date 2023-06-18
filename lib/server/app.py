@@ -47,7 +47,7 @@ def register_user():
     user_exists = User.query.filter_by(email=email).first() is not None
 
     if user_exists:
-        return jsonify({"error": "User already exists"}), 409
+        return jsonify({"error": "User already exists"}), 407
 
     hashed_password = bcrypt.generate_password_hash(password)
     try:
