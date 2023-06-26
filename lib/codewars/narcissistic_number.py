@@ -2,6 +2,7 @@ def narcissistic( value ):
     number = str(value)
     value_length = len(number)
     num = 0
+    
     print(value_length)
     print(number)
 
