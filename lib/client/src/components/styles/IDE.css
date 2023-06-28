@@ -4,13 +4,11 @@ option{
 select{
     background-color: rgb(71, 66, 66);
 }
-
 textarea {
     background-color: rgb(71, 66, 66);
     color: white;
     border-radius: 4px;
 }
-
 #sub-btn{
     border-radius: 4px;
     height: 44px;
