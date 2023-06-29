@@ -1,6 +1,5 @@
    Author: Camron West
 
-
 This repo currently has folders and files for solutions to questions on the website "Leetcode".
 The problems are intended to be used to prepare for interviews, or to merely practice data structures and algorithms.
 
