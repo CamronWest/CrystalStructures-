@@ -8,4 +8,5 @@ def unique_in_order(sequence):
 
     print(sequence_chars)        
 
+
 unique_in_order("ABBCcA")
