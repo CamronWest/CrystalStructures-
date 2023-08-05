@@ -6,6 +6,7 @@ public class Solution {
                 return new int[] {intStore[target-nums[i]],i};
             } else [
                 intStore[nums[i]] = i;
+
             ]
         }
         return null;
